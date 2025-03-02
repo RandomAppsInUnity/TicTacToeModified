@@ -3,74 +3,64 @@
     border: 0;
     margin: 0;
     padding: 0;
+    font-family: 'Arial', sans-serif;
 }
 
-/* Center the WebGL content */
+/* Fullscreen WebGL container */
 .webgl-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    background: black; /* Keep background black */
+    background: radial-gradient(circle at center, #0f0f0f, #000);
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
-/* Loading logo and progress bar */
-.webgl-content .logo,
-.webgl-content .progress {
+/* Hide WebGL container until Play button is clicked */
+#unity-container {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Play Button - GX Games Style */
+#play-button {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    z-index: 10;
+    background: linear-gradient(45deg, #ff004c, #ff006a);
+    color: white;
+    font-size: 24px;
+    padding: 15px 50px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 2px solid #ff006a;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    box-shadow: 0 0 20px rgba(255, 0, 76, 0.7);
+    transition: all 0.3s ease-in-out;
+    animation: pulse 1.5s infinite alternate;
 }
 
-/* Logo styling */
-.webgl-content .logo {
-    background: url('progressLogo.Light.png') no-repeat center / contain;
-    width: 154px;
-    height: 130px;
+/* Button Hover Effect */
+#play-button:hover {
+    background: linear-gradient(45deg, #ff006a, #ff004c);
+    box-shadow: 0 0 30px rgba(255, 0, 76, 1);
+    transform: scale(1.05);
 }
 
-/* Progress bar styling */
-.webgl-content .progress {
-    height: 18px;
-    width: 141px;
-    margin-top: 90px;
-}
-
-.webgl-content .progress .empty {
-    background: url('progressEmpty.Light.png') no-repeat right / cover;
-    float: right;
-    width: 100%;
-    height: 100%;
-    display: inline-block;
-}
-
-.webgl-content .progress .full {
-    background: url('progressFull.Light.png') no-repeat left / cover;
-    float: left;
-    width: 0%;
-    height: 100%;
-    display: inline-block;
-}
-
-/* Dark mode variations */
-.webgl-content .logo.Dark {
-    background-image: url('progressLogo.Dark.png');
-}
-
-.webgl-content .progress.Dark .empty {
-    background-image: url('progressEmpty.Dark.png');
-}
-
-.webgl-content .progress.Dark .full {
-    background-image: url('progressFull.Dark.png');
+/* Glowing Animation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 15px rgba(255, 0, 76, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 25px rgba(255, 0, 76, 1);
+    }
 }
 
 /* Ensure the WebGL canvas takes the full screen */
@@ -78,6 +68,30 @@ canvas {
     width: 100vw !important;
     height: 100vh !important;
     display: block;
+}
+
+/* Loading screen with GX vibe */
+.loading-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ff006a;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: bold;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Hide footer and other unnecessary UI elements */
