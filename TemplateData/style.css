@@ -16,6 +16,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden; /* Ensures no scrollbar */
 }
 
 /* Hide WebGL initially */
@@ -45,7 +46,6 @@
     border: none;
     text-transform: uppercase;
     box-shadow: 0px 6px 0px #980f30, 0px 10px 20px rgba(0, 0, 0, 0.5);
-    display: none; /* Hidden initially */
     transition: all 0.2s ease-in-out;
 }
 
@@ -56,9 +56,21 @@
     transform: translateY(2px);
 }
 
+/* Loading Screen */
+.loading-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    z-index: 20;
+}
+
 /* Ensure the WebGL canvas takes full screen */
 canvas {
-    width: 100vw !important;
-    height: 100vh !important;
+    width: 100% !important;
+    height: 100% !important;
     display: block;
 }
