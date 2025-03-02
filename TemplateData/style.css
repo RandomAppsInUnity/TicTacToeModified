@@ -1,35 +1,102 @@
-/* Center the Play button */
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Make the body take up the full height and width of the viewport */
+body, html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Prevent scrolling */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222; /* Optional: background color */
+}
+
+/* Center content container */
+.webgl-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* The Unity container should initially be hidden */
+#unity-container {
+    width: 100%;
+    height: 100%;
+    display: none; /* Will be shown after Play button is clicked */
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black; /* Optional: background color while loading */
+}
+
+/* Make sure the Unity WebGL content fills the Unity container */
+#unityContainer {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Play button style */
 #play-button {
     font-size: 24px;
-    padding: 10px 20px;
+    padding: 20px 40px;
     background-color: #4CAF50;
     color: white;
     border: none;
     cursor: pointer;
-    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    z-index: 10; /* Ensure it's on top */
 }
 
 #play-button:hover {
     background-color: #45a049;
 }
 
-/* Style for Unity WebGL container */
-#unity-container {
-    position: relative;
-    width: 800px; /* Adjust to your desired width */
-    height: 600px; /* Adjust to your desired height */
-    margin: 0 auto;
-    background-color: #000; /* Background color in case of loading */
-    display: none;
+/* Footer styling */
+.footer {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    text-align: center;
 }
 
-/* Loading screen style */
-.loading-screen {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 24px;
-    color: #fff;
-    z-index: 10;
+.webgl-logo {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-image: url('TemplateData/favicon.ico');
+    background-size: cover;
+    margin-right: 10px;
+}
+
+.fullscreen {
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.fullscreen:hover {
+    background-color: #444;
+}
+
+.title {
+    display: inline-block;
+    font-weight: bold;
 }
