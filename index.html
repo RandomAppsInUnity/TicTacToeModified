@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GX Games WebGL</title>
-    <link rel="stylesheet" href="templatedata/styles.css">
+    <link rel="stylesheet" href="templatedata\styles.css">
 </head>
 <body>
     <div class="webgl-content">
@@ -41,7 +41,7 @@
             }
 
             // Load Unity WebGL application
-            UnityLoader.instantiate("unity-canvas", "Build/WebGL.json", {
+            UnityLoader.instantiate("unity-canvas", "Build/tictactoe.json", {
                 onProgress: function (instance, progress) {
                     console.log(`Loading: ${progress * 100}%`);
                     if (progress === 1) {
