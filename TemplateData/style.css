@@ -1,41 +1,35 @@
-<script src="Build/UnityLoader.js"></script>
-<script>
-    window.onload = function () {
-        setTimeout(() => {
-            document.getElementById("play-button").style.display = "block";
-            document.getElementById("unity-container").classList.add("frozen");
-        }, 100); // 0.1s delay
-    };
+/* Center the Play button */
+#play-button {
+    font-size: 24px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
 
-    document.getElementById("play-button").addEventListener("click", function () {
-        const playButton = document.getElementById("play-button");
-        const unityContainer = document.getElementById("unity-container");
+#play-button:hover {
+    background-color: #45a049;
+}
 
-        // Hide Play button
-        playButton.style.display = "none";
+/* Style for Unity WebGL container */
+#unity-container {
+    position: relative;
+    width: 800px; /* Adjust to your desired width */
+    height: 600px; /* Adjust to your desired height */
+    margin: 0 auto;
+    background-color: #000; /* Background color in case of loading */
+    display: none;
+}
 
-        // Unfreeze game
-        unityContainer.classList.remove("frozen");
-
-        // Show WebGL container
-        unityContainer.style.display = "block";
-
-        // Request fullscreen
-        if (unityContainer.requestFullscreen) {
-            unityContainer.requestFullscreen();
-        } else if (unityContainer.mozRequestFullScreen) { // Firefox
-            unityContainer.mozRequestFullScreen();
-        } else if (unityContainer.webkitRequestFullscreen) { // Chrome, Safari, Opera
-            unityContainer.webkitRequestFullscreen();
-        } else if (unityContainer.msRequestFullscreen) { // IE/Edge
-            unityContainer.msRequestFullscreen();
-        }
-
-        // Load Unity WebGL
-        UnityLoader.instantiate("unity-canvas", "Build/tictactoe.json", {
-            onProgress: function (instance, progress) {
-                console.log(`Loading: ${progress * 100}%`);
-            }
-        });
-    });
-</script>
+/* Loading screen style */
+.loading-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #fff;
+    z-index: 10;
+}
