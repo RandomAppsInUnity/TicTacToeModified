@@ -1,0 +1,16 @@
+{
+"companyName": "No Name",
+"productName": "Tic-Tac-Toe Modified",
+"productVersion": "0.1",
+"dataUrl": "Tic-Tac-Toe Modified.data.unityweb",
+"wasmCodeUrl": "Tic-Tac-Toe Modified.wasm.code.unityweb",
+"wasmFrameworkUrl": "Tic-Tac-Toe Modified.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#000000",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.4.36f1"
+}
