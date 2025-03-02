@@ -15,19 +15,22 @@
         </div>
     </div>
 
+    <!-- Unity WebGL Loader Script -->
     <script src="Build/UnityLoader.js"></script>
+    
     <script>
         document.getElementById("play-button").addEventListener("click", function () {
             const playButton = document.getElementById("play-button");
             const unityContainer = document.getElementById("unity-container");
+            const loadingScreen = document.querySelector(".loading-screen");
 
             // Hide Play button
             playButton.style.display = "none";
 
-            // Show WebGL container
+            // Show Unity container
             unityContainer.style.display = "block";
 
-            // Request fullscreen
+            // Request fullscreen if possible
             if (unityContainer.requestFullscreen) {
                 unityContainer.requestFullscreen();
             } else if (unityContainer.mozRequestFullScreen) { // Firefox
@@ -42,6 +45,10 @@
             UnityLoader.instantiate("unity-canvas", "Build/WebGL.json", {
                 onProgress: function (instance, progress) {
                     console.log(`Loading: ${progress * 100}%`);
+                    if (progress === 1) {
+                        // Hide loading screen when fully loaded
+                        loadingScreen.style.display = "none";
+                    }
                 }
             });
         });
