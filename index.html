@@ -1,23 +1,23 @@
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GX Games WebGL</title>
-    <link rel="stylesheet" href="templatedata\styles.css">
+    <title>TicTacToe ModifiedL</title>
+    <link rel="stylesheet" href="templatedata/styles.css"> <!-- Correct path to your CSS -->
+    <script src="Build/UnityLoader.js"></script> <!-- Correct path to UnityLoader.js -->
 </head>
 <body>
     <div class="webgl-content">
         <button id="play-button">Play</button>
-        <div id="unity-container">
+        <div id="unity-container" style="display: none;">
             <div class="loading-screen">Loading...</div>
             <canvas id="unity-canvas"></canvas>
         </div>
     </div>
 
-    <!-- Unity WebGL Loader Script -->
-    <script src="Build/UnityLoader.js"></script>
-    
     <script>
+        // Wait until the play button is clicked to load Unity
         document.getElementById("play-button").addEventListener("click", function () {
             const playButton = document.getElementById("play-button");
             const unityContainer = document.getElementById("unity-container");
@@ -26,26 +26,15 @@
             // Hide Play button
             playButton.style.display = "none";
 
-            // Show Unity container
+            // Show Unity container and start loading Unity WebGL
             unityContainer.style.display = "block";
 
-            // Request fullscreen if possible
-            if (unityContainer.requestFullscreen) {
-                unityContainer.requestFullscreen();
-            } else if (unityContainer.mozRequestFullScreen) { // Firefox
-                unityContainer.mozRequestFullScreen();
-            } else if (unityContainer.webkitRequestFullscreen) { // Chrome, Safari, Opera
-                unityContainer.webkitRequestFullscreen();
-            } else if (unityContainer.msRequestFullscreen) { // IE/Edge
-                unityContainer.msRequestFullscreen();
-            }
-
-            // Load Unity WebGL application
+            // Load Unity WebGL game
             UnityLoader.instantiate("unity-canvas", "Build/tictactoe.json", {
                 onProgress: function (instance, progress) {
                     console.log(`Loading: ${progress * 100}%`);
                     if (progress === 1) {
-                        // Hide loading screen when fully loaded
+                        // Hide the loading screen once fully loaded
                         loadingScreen.style.display = "none";
                     }
                 }
