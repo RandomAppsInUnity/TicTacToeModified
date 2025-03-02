@@ -32,7 +32,7 @@
         }
 
         // Load Unity WebGL
-        UnityLoader.instantiate("unity-canvas", "Build/WebGL.json", {
+        UnityLoader.instantiate("unity-canvas", "Build/tictactoe.json", {
             onProgress: function (instance, progress) {
                 console.log(`Loading: ${progress * 100}%`);
             }
