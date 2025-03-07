@@ -11,14 +11,119 @@
     <script>
       var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Tic-Tac-Toe Modified.json", {onProgress: UnityProgress});
     </script>
+    <style>
+      /* General Styling */
+      body {
+        background-color: #0d0d0d;
+        color: #ffffff;
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        padding: 20px;
+      }
+
+      /* WebGL Container */
+      .webgl-content {
+        text-align: center;
+      }
+
+      /* GX Header Styling */
+      .page-header {
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #ff004d;
+        margin-bottom: 20px;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        color: #aaa;
+      }
+
+      /* GX Button Styling */
+      .gx-button {
+        display: inline-block;
+        background-color: #ff004d;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: 0.3s ease-in-out;
+      }
+
+      .gx-button:hover {
+        background-color: white;
+        color: #ff004d;
+        box-shadow: 0 0 15px rgba(255, 0, 77, 0.8);
+      }
+
+      /* Footer Styling */
+      .footer {
+        margin-top: 40px;
+        font-size: 0.9rem;
+        color: #aaa;
+        text-align: center;
+      }
+
+      .footer .chatgpt-message {
+        font-weight: bold;
+        color: #ff004d;
+        font-size: 1.1rem;
+        margin-top: 20px;
+      }
+
+      .footer .gx-button {
+        display: inline-block;
+        background-color: #ff004d;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: 0.3s ease-in-out;
+      }
+
+      .footer .gx-button:hover {
+        background-color: white;
+        color: #ff004d;
+        box-shadow: 0 0 15px rgba(255, 0, 77, 0.8);
+      }
+
+      .title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #ff004d;
+      }
+    </style>
   </head>
   <body>
     <div class="webgl-content">
+      <!-- GX Header -->
+      <h1 class="page-header">Tic-Tac-Toe Modified</h1>
+      <p class="subtitle">A fun, modified version of Tic-Tac-Toe created using Unity.</p>
+
+      <!-- Unity WebGL Container -->
       <div id="unityContainer" style="width: 960px; height: 600px"></div>
+
+      <!-- Footer Section -->
       <div class="footer">
+        <!-- WebGL Logo (Optional) -->
         <div class="webgl-logo"></div>
+        
+        <!-- Fullscreen Button -->
         <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+
+        <!-- Game Title in Footer -->
         <div class="title">Tic-Tac-Toe Modified</div>
+
+        <!-- ChatGPT Modification Message -->
+        <p class="chatgpt-message">Site modified with the help of <strong>ChatGPT</strong>.</p>
+
+        <!-- Link to the Developer's Page -->
+        <a href="https://github.com/RandomAppsInUnity" target="_blank" class="gx-button">Visit the Developer's Page</a>
       </div>
     </div>
   </body>
