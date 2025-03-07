@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TicTacToe Modified | GX Style</title>
+    <title>Unity App</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <script src="TemplateData/UnityProgress.js"></script>
@@ -12,156 +12,120 @@
     <style>
         /* General Styling */
         body {
-            background-color: #0d0d0d;
-            color: #ffffff;
-            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #fff;
         }
 
-        /* WebGL Player Styling */
+        /* Nav Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #ff004d;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar a {
+            color: #fff;
+            font-size: 1.2rem;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #fff;
+            color: #ff004d;
+            border-radius: 5px;
+        }
+
+        /* WebGL Player Container */
+        .webgl-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 100px); /* Adjust height considering navbar */
+            background-color: #000;
+        }
+
         #unityContainer {
             border: 5px solid #ff004d;
-            box-shadow: 0 0 25px rgba(255, 0, 77, 0.8);
+            box-shadow: 0 0 30px rgba(255, 0, 77, 0.8);
             width: 960px;
             height: 600px;
-            margin: 50px auto;
-            border-radius: 10px;
+            border-radius: 15px;
         }
 
         #unityContainer:hover {
-            box-shadow: 0 0 35px rgba(255, 0, 77, 1);
+            box-shadow: 0 0 50px rgba(255, 0, 77, 1);
         }
 
-        /* Side Menu */
-        .sidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.3s;
-            padding-top: 60px;
+        /* Footer Section */
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #121212;
+            color: #aaa;
+            font-size: 1rem;
         }
 
-        .sidenav a {
-            padding: 15px 30px;
-            text-decoration: none;
-            font-size: 1.3rem;
-            color: #fff;
-            display: block;
-            transition: 0.3s;
-            border-bottom: 1px solid #444;
-        }
-
-        .sidenav a:hover {
-            color: #ff004d;
-            background-color: #222;
-        }
-
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            color: #fff;
-            margin-left: 50px;
-        }
-
-        /* Menu Button */
-        .menu-btn {
-            font-size: 30px;
-            cursor: pointer;
-            color: #fff;
+        /* Modern Button */
+        .btn {
             background-color: #ff004d;
-            padding: 10px 20px;
+            color: white;
+            padding: 12px 20px;
             border-radius: 5px;
-            border: none;
-            position: absolute;
-            top: 20px;
-            left: 20px;
+            text-decoration: none;
+            font-size: 1.2rem;
             transition: 0.3s;
+            font-weight: bold;
         }
 
-        .menu-btn:hover {
+        .btn:hover {
             background-color: #fff;
             color: #ff004d;
             box-shadow: 0 0 10px rgba(255, 0, 77, 0.8);
         }
 
-        /* Footer Section */
-        .footer {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 1rem;
-            color: #aaa;
-        }
-
-        .footer .gx-button {
-            display: inline-block;
-            background-color: #ff004d;
-            color: white;
-            padding: 12px 25px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: 0.3s ease-in-out;
-        }
-
-        .footer .gx-button:hover {
-            background-color: white;
-            color: #ff004d;
-            box-shadow: 0 0 15px rgba(255, 0, 77, 0.8);
-        }
-
-        .chatgpt-message {
+        /* ASCII Art Footer */
+        .ascii-footer {
             margin-top: 20px;
-            font-size: 1.1rem;
-            font-weight: bold;
+            font-size: 1rem;
             color: #ff004d;
+            font-weight: bold;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <!-- Side Menu -->
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <h2 style="color: #fff; text-align: center; margin-top: 10px;">Menu</h2>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="https://randomappsinunity.github.io/">Home</a>
         <a href="javascript:void(0)" onclick="unityInstance.SetFullscreen(1)">Fullscreen</a>
-        <a href="https://randomappsinunity.github.io/">Back to Main</a>
-        <div class="chatgpt-message">Site modified with the help of <strong>ChatGPT</strong>.</div>
     </div>
 
-    <!-- Open Menu Button -->
-    <button class="menu-btn" onclick="openNav()">☰</button>
-
-    <!-- WebGL Content with Neon Border -->
-    <div class="webgl-content">
+    <!-- WebGL Player Container -->
+    <div class="webgl-container">
         <div id="unityContainer"></div>
     </div>
 
     <!-- Footer Section -->
     <div class="footer">
-        <a href="javascript:void(0)" class="gx-button" onclick="openNav()">Menu</a>
+        <a href="javascript:void(0)" class="btn" onclick="openNav()">Menu</a>
+    </div>
+
+    <!-- ASCII Art Footer -->
+    <div class="ascii-footer">
+        Html Modified with Big help from <strong>/Bold/ ChatGPT</strong>
     </div>
 
     <script>
-        // Open the side menu
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-        }
-
-        // Close the side menu
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-
         // Unity WebGL Instantiation
         var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Tic-Tac-Toe Modified.json", {onProgress: UnityProgress});
     </script>
