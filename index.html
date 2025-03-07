@@ -3,135 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tic-Tac-Toe Modified</title>
+    <title>TicTacToe Modified | GX Style</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
-    <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Tic-Tac-Toe Modified.json", {onProgress: UnityProgress});
-    </script>
 
     <style>
-      /* General Styling */
-      body {
-        background-color: #0d0d0d;
-        color: #ffffff;
-        font-family: 'Arial', sans-serif;
-        text-align: center;
-        padding: 20px;
-        margin: 0;
-        overflow-x: hidden;
-      }
+        /* General Styling */
+        body {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
 
-      /* WebGL Container */
-      .webgl-content {
-        text-align: center;
-        position: relative;
-      }
+        /* WebGL Player Styling */
+        #unityContainer {
+            border: 5px solid #ff004d;
+            box-shadow: 0 0 25px rgba(255, 0, 77, 0.8);
+            width: 960px;
+            height: 600px;
+            margin: 50px auto;
+            border-radius: 10px;
+        }
 
-      /* Neon Border */
-      #unityContainer {
-        border: 5px solid #ff004d;
-        box-shadow: 0 0 20px rgba(255, 0, 77, 0.8);
-        transition: box-shadow 0.3s ease-in-out;
-      }
+        #unityContainer:hover {
+            box-shadow: 0 0 35px rgba(255, 0, 77, 1);
+        }
 
-      #unityContainer:hover {
-        box-shadow: 0 0 25px rgba(255, 0, 77, 1);
-      }
+        /* Side Menu */
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+        }
 
-      /* Side Menu */
-      .sidenav {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #111;
-        overflow-x: hidden;
-        transition: 0.3s;
-        padding-top: 60px;
-      }
+        .sidenav a {
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+            border-bottom: 1px solid #444;
+        }
 
-      .sidenav a {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-size: 1.2rem;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
-      }
+        .sidenav a:hover {
+            color: #ff004d;
+            background-color: #222;
+        }
 
-      .sidenav a:hover {
-        color: #ff004d;
-      }
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            color: #fff;
+            margin-left: 50px;
+        }
 
-      .sidenav .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-      }
+        /* Menu Button */
+        .menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+            color: #fff;
+            background-color: #ff004d;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            transition: 0.3s;
+        }
 
-      .menu-btn {
-        font-size: 30px;
-        cursor: pointer;
-        color: #fff;
-        background-color: #ff004d;
-        padding: 10px 20px;
-        border-radius: 5px;
-        border: none;
-        transition: 0.3s;
-      }
+        .menu-btn:hover {
+            background-color: #fff;
+            color: #ff004d;
+            box-shadow: 0 0 10px rgba(255, 0, 77, 0.8);
+        }
 
-      .menu-btn:hover {
-        background-color: white;
-        color: #ff004d;
-        box-shadow: 0 0 10px rgba(255, 0, 77, 0.8);
-      }
+        /* Footer Section */
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 1rem;
+            color: #aaa;
+        }
 
-      /* Footer Styling */
-      .footer {
-        margin-top: 40px;
-        font-size: 0.9rem;
-        color: #aaa;
-        text-align: center;
-      }
+        .footer .gx-button {
+            display: inline-block;
+            background-color: #ff004d;
+            color: white;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s ease-in-out;
+        }
 
-      .footer .chatgpt-message {
-        font-weight: bold;
-        color: #ff004d;
-        font-size: 1.1rem;
-        margin-top: 20px;
-      }
+        .footer .gx-button:hover {
+            background-color: white;
+            color: #ff004d;
+            box-shadow: 0 0 15px rgba(255, 0, 77, 0.8);
+        }
 
-      .footer .gx-button {
-        display: inline-block;
-        background-color: #ff004d;
-        color: white;
-        padding: 10px 20px;
-        font-size: 1.2rem;
-        font-weight: bold;
-        border-radius: 8px;
-        text-decoration: none;
-        transition: 0.3s ease-in-out;
-      }
-
-      .footer .gx-button:hover {
-        background-color: white;
-        color: #ff004d;
-        box-shadow: 0 0 15px rgba(255, 0, 77, 0.8);
-      }
-
-      .title {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #ff004d;
-      }
-
+        .chatgpt-message {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ff004d;
+        }
     </style>
 </head>
 <body>
@@ -139,38 +132,39 @@
     <!-- Side Menu -->
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="https://randomappsinunity.github.io/" target="_blank">Home Page</a>
+        <h2 style="color: #fff; text-align: center; margin-top: 10px;">Menu</h2>
         <a href="javascript:void(0)" onclick="unityInstance.SetFullscreen(1)">Fullscreen</a>
-        <p class="chatgpt-message">Site modified with the help of <strong>ChatGPT</strong>.</p>
+        <a href="https://randomappsinunity.github.io/">Back to Main</a>
+        <div class="chatgpt-message">Site modified with the help of <strong>ChatGPT</strong>.</div>
     </div>
 
     <!-- Open Menu Button -->
-    <button class="menu-btn" onclick="openNav()">☰ Open Menu</button>
+    <button class="menu-btn" onclick="openNav()">☰</button>
 
     <!-- WebGL Content with Neon Border -->
     <div class="webgl-content">
-        <h1 class="page-header">Tic-Tac-Toe Modified</h1>
-        <p class="subtitle">A fun, modified version of Tic-Tac-Toe created using Unity.</p>
-
-        <!-- Unity WebGL Container -->
-        <div id="unityContainer" style="width: 960px; height: 600px"></div>
+        <div id="unityContainer"></div>
     </div>
 
     <!-- Footer Section -->
     <div class="footer">
-        <div class="title">Tic-Tac-Toe Modified</div>
-        <!-- ChatGPT Modification Message -->
-        <p class="chatgpt-message">Site modified with the help of <strong>ChatGPT</strong>.</p>
+        <a href="javascript:void(0)" class="gx-button" onclick="openNav()">Menu</a>
     </div>
 
     <script>
-      function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-      }
+        // Open the side menu
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
 
-      function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-      }
+        // Close the side menu
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+        // Unity WebGL Instantiation
+        var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Tic-Tac-Toe Modified.json", {onProgress: UnityProgress});
     </script>
+
 </body>
 </html>
