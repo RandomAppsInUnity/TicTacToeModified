@@ -116,10 +116,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+
+    <!-- Unity WebGL Loader -->
     <script src="Build/UnityLoader.js"></script>
 
     <script>
-        var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Tic-Tac-Toe Modified.json", { onProgress: UnityProgress });
+        // Ensure the WebGL game is initialized with UnityLoader and the appropriate .json file
+        var unityInstance = UnityLoader.instantiate("unityContainer", "Build/YourGame.json", {
+            onProgress: UnityProgress
+        });
     </script>
 </body>
 </html>
