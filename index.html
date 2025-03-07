@@ -98,7 +98,8 @@
 
     <!-- Navbar with Links -->
     <nav class="navbar">
-        <a href="#" class="glow">Home</a>
+        <!-- Home button links to the provided URL -->
+        <a href="https://randomappsinunity.github.io/" class="glow">Home</a>
         <a href="#" class="glow" onclick="unityInstance.SetFullscreen(1)">Fullscreen</a>
     </nav>
 
@@ -122,7 +123,7 @@
 
     <script>
         // Ensure the WebGL game is initialized with UnityLoader and the appropriate .json file
-        var unityInstance = UnityLoader.instantiate("unityContainer", "Build/YourGame.json", {
+        var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Tic-Tac-Toe Modified.json", {
             onProgress: UnityProgress
         });
     </script>
